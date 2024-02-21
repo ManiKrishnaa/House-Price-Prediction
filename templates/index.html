@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Property Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('house.jpg') center center fixed; 
+            background-size: cover; 
+            opacity: 0.7; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); 
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+
+        .container h1 {
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label, select, input[type="number"] {
+            margin: 10px 0; 
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px; 
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        
+        p#pred {
+            font-weight: bold;
+            color: #007BFF; 
+            text-align: center;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Housing Price Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="area">Area (in sq ft):</label>
+            <input type="number" name="area" id="area" required><br>
+
+            <label for="bedrooms">Bedrooms:</label>
+            <input type="number" name="bedrooms" id="bedrooms" required><br>
+
+            <label for="bathrooms">Bathrooms:</label>
+            <input type="number" name="bathrooms" id="bathrooms" required><br>
+
+            <label for="floors">Floors:</label>
+            <input type="number" name="floors" id="floors" required><br>
+
+            <label for="parking">Parking:</label>
+            <input type="number" name="parking" id="parking" required><br>
+
+            <label for="mainroad">Main Road:</label>
+            <select name="mainroad" id="mainroad">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select><br>
+
+            <label for="guestroom">Guest Room:</label>
+            <select name="guestroom" id="guestroom">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select><br>
+
+            <label for="basement">Basement:</label>
+            <select name="basement" id="basement">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select><br>
+
+            <label for="geyser">Geyser:</label>
+            <select name="geyser" id="geyser">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select><br>
+
+            <label for="ac">Air Conditioning:</label>
+            <select name="ac" id="ac">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select><br>
+
+            <label for="prefarea">Preferred Area:</label>
+            <select name="prefarea" id="prefarea">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select><br>
+
+            <label for="furnishingstatus">Furnishing Status:</label>
+            <select name="furnishingstatus" id="furnishingstatus">
+                <option value="furnished">Furnished</option>
+                <option value="semi-furnished">Semi-Furnished</option>
+                <option value="unfurnished">Unfurnished</option>
+            </select><br>
+
+            <input type="submit" value="Predict">
+        </form>
+        <p id="pred"> Predicted Cost : {{ prediction }}</p>
+    </div>
+</body>
+</html>
